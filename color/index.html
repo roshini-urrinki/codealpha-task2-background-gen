@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Generator</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Background Generator</h1>
+        <div class="text-center">
+            <button id="generateButton" class="btn btn-primary">Generate Random Color</button>
+        </div>
+        <div id="colorCode" class="text-center mt-3">Color Code: #FFFFFF</div>
+    </div>
+    <script>
+    // Get references to the button and color code display
+const generateButton = document.getElementById('generateButton');
+const colorCodeDisplay = document.getElementById('colorCode');
+
+// Function to generate a random hexadecimal color
+function generateRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Add a click event listener to the button
+generateButton.addEventListener('click', () => {
+    const randomColor = generateRandomColor();
+    
+    // Update the background color and color code display
+    document.body.style.backgroundColor = randomColor;
+    colorCodeDisplay.textContent = `Color Code: ${randomColor}`;
+});
+
+// Initial background color
+generateButton.click(); // Automatically generate a color on page load
+
+    </script>
+</body>
+</html>
